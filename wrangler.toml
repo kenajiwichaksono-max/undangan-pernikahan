@@ -1,7 +1,7 @@
 name = "undangan-krisnaindah"
 compatibility_date = "2026-03-01"
 
-[d1_databases]
+[[d1_databases]]
 binding = "DB"
 database_name = "db-undangan"
 database_id = "masukkan-database-id-kamu"
