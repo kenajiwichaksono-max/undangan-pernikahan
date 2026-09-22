@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<meta content="#F2F4EC" name="theme-color"/>
+<meta content="light" name="color-scheme"/>
+<meta content="Krisnadi &amp; Indah — An Intimate Celebration of Love" name="description"/>
+<meta content="website" property="og:type"/>
+<meta content="Krisnadi &amp; Indah — 13 Desember 2026" property="og:title"/>
+<meta content="An Intimate Celebration of Love" property="og:description"/>
+<meta content="https://krisnadindah.my.id/" property="og:url"/>
+<meta content="summary" name="twitter:card"/>
+<link href="https://krisnadindah.my.id/" rel="canonical"/>
+<title>Krisnadi &amp; Indah — An Intimate Celebration of Love</title>
+
+<!-- Memuat library pemutar dotLottie untuk burung.lottie -->
+<script type="module" src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"></script>
+
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link crossorigin="" href="https://cdnjs.cloudflare.com" rel="preconnect"/>
+<link crossorigin="" href="https://res.cloudinary.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&amp;family=Cormorant+Garamond:wght@400;500;600;700&amp;family=Montserrat:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+
+<!-- Menghubungkan ke file CSS terpisah -->
+<link rel="stylesheet" href="src/style.css"/>
+
+<script>
+(function(){
+  if (/Android/i.test(navigator.userAgent || '')) {
+    document.documentElement.classList.add('android-safe');
+  }
+})();
+</script>
+</head>
+<body class="locked" data-site="krisnadindah">
+
+<!-- OPENING COVER -->
+<div id="opening">
+<div aria-hidden="true" class="opening-cinema">
+<div class="opening-cinema__halo"></div>
+</div>
+<div class="opening-inner">
+<div class="eyebrow">An Intimate Celebration of Love</div>
+<h1 class="opening-names">
+      Krisnadi
+      <span class="ampersand">&amp;</span>
+      Indah
+    </h1>
+<div class="opening-date">13 · 12 · 2026</div>
+<div class="guest-box">
+<div class="guest-label">UNTUK TAMU TERKASIH</div>
+<div class="guest-name" id="guestCover">Tamu Terhormat</div>
+</div>
+<div class="open-button-container">
+<button class="open-button" id="openInvitation" type="button">
+          Buka Undangan
+        </button>
+</div>
+</div>
+</div>
+
+<!-- MUSIC -->
+<div class="music-btn" id="musicButton">♪</div>
+<audio id="weddingMusic" loop="" preload="metadata">
+<source src="https://res.cloudinary.com/qqfthqqh/video/upload/v1789824433/Al-I_tiraf_Saxophone_Cover_by_Dori_Wirawan.mp3" type="audio/mpeg"/>
+</audio>
+
+<!-- HERO -->
+<div class="wedding-panel is-active" data-panel="home" id="homePanel">
+<section class="hero">
+<div class="hero-inner">
+<div class="doves-container">
+<dotlottie-player class="hero-dove dove-left" src="assets/burung.lottie" background="transparent" speed="1" loop autoplay></dotlottie-player>
+<dotlottie-player class="hero-dove dove-right" src="assets/burung.lottie" background="transparent" speed="1" loop autoplay></dotlottie-player>
+</div>
+<div class="hero-small reveal">An Intimate Celebration of Love</div>
+<div class="hero-names reveal">
+<span>Krisnadi</span>
+<span class="hero-and">&amp;</span>
+<span>Indah</span>
+</div>
+<span class="accent-line reveal"></span>
+<div class="intimate-note">
+<div class="quran-verse">
+        “Dan di antara tanda-tanda kebesaran-Nya, Dia menciptakan untukmu pasangan dari jenismu sendiri,
+        agar hatimu menemukan ketenteraman padanya. Di antara kalian Dia menumbuhkan kasih dan sayang.
+        Sungguh, di dalamnya ada tanda-tanda bagi mereka yang mau merenung.”
+      </div>
+<div class="quran-reference">
+        AR-RUM · AYAT 21
+      </div>
+</div>
+</div>
+</section>
+
+<!-- WEDDING DAY -->
+<section class="section event-section">
+<div class="container">
+<div class="section-kicker scroll-reveal">Tandai Hari Bahagia Kami</div>
+<h2 class="section-title scroll-reveal">Saat Dua Jalan Menjadi Satu</h2>
+<p class="section-text scroll-reveal">Minggu, 13 Desember 2026</p>
+<div class="countdown scroll-reveal">
+<div class="countdown-item">
+<div class="countdown-number" id="days">00</div>
+<div class="countdown-label">Hari</div>
+</div>
+<div class="countdown-item">
+<div class="countdown-number" id="hours">00</div>
+<div class="countdown-label">Jam</div>
+</div>
+<div class="countdown-item">
+<div class="countdown-number" id="minutes">00</div>
+<div class="countdown-label">Menit</div>
+</div>
+<div class="countdown-item">
+<div class="countdown-number" id="seconds">00</div>
+<div class="countdown-label">Detik</div>
+</div>
+</div>
+<div class="event-timeline scroll-reveal" id="eventTimeline">
+<div aria-hidden="true" class="timeline-line"></div>
+<div aria-hidden="true" class="timeline-progress"></div>
+<div class="timeline-event">
+<div class="timeline-time">16.00<small>Dimulai</small></div>
+<div aria-hidden="true" class="timeline-node"></div>
+<div class="event-card">
+<div class="event-label">Momen Sakral</div>
+<div class="event-title">Akad</div>
+<div class="event-info">
+            Minggu, 13 Desember 2026<br/>
+            16.00 – 18.00 WIB<br/><br/>
+            VILLA SRIMANGANTI<br/>
+            Ciracas, Jakarta Timur
+          </div>
+<a class="map-button" href="https://www.google.com/maps/search/?api=1&amp;query=Villa+Sri+Manganti+Ciracas" rel="noopener noreferrer" target="_blank">Lihat Lokasi</a>
+</div>
+</div>
+<div class="timeline-event">
+<div class="timeline-time">18.00<small>Berlanjut</small></div>
+<div aria-hidden="true" class="timeline-node"></div>
+<div class="event-card">
+<div class="event-label">Perayaan</div>
+<div class="event-title">Resepsi Pernikahan</div>
+<div class="event-info">
+            Minggu, 13 Desember 2026<br/>
+            18.00 – 20.00 WIB<br/><br/>
+            VILLA SRIMANGANTI<br/>
+            Ciracas, Jakarta Timur
+          </div>
+<a class="map-button" href="https://www.google.com/maps/search/?api=1&amp;query=Villa+Sri+Manganti+Ciracas" rel="noopener noreferrer" target="_blank">Lihat Lokasi</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+
+<!-- COUPLE -->
+<section class="section couple-section wedding-panel" data-panel="couple" id="couplePanel">
+<div class="container">
+<div class="section-kicker reveal">Sang Mempelai</div>
+<h2 class="section-title reveal">Dua Hati, Satu Janji</h2>
+<div class="couple-grid">
+<div class="person reveal">
+<div class="person-role">The Groom</div>
+<div class="person-photo" style="background-image: url('assets/foto/foto1.jpg');"></div>
+<div class="person-name">Muhammad Krisnadi Wibowo</div>
+</div>
+<div class="person reveal">
+<div class="person-role">The Bride</div>
+<div class="person-photo" style="background-image: url('assets/foto/foto2.jpg');"></div>
+<div class="person-name">Indah Nurwita Sari</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- DUA -->
+<section class="section dua-section wedding-panel" data-panel="prayer" id="prayerPanel">
+<div class="container">
+<div class="section-kicker reveal">Doa untuk Langkah Baru Kami</div>
+<h2 class="section-title reveal">Dalam Lindungan dan Berkah-Nya</h2>
+<div class="dua-card reveal">
+<div aria-hidden="true" class="dua-sacred-mark"><span></span></div>
+<div class="dua-arabic" dir="rtl" lang="ar">
+        بَارَكَ اللهُ لَكُمَا، وَبَارَكَ عَلَيْكُمَا، وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ
+      </div>
+<div class="dua-divider"></div>
+<div class="dua-latin">
+        Bārakallāhu lakumā, wa bāraka ‘alaykumā,
+        wa jama‘a baynakumā fī khayr.
+      </div>
+<div class="dua-divider"></div>
+<div class="dua-translation">
+        “Semoga Allah memberkahi kalian berdua, melimpahkan keberkahan atas kalian,
+        dan mempersatukan kalian dalam kebaikan.”
+      </div>
+</div>
+</div>
+</section>
+
+<!-- ETIQUETTE -->
+<section class="section etiquette-section wedding-panel" data-panel="etiquette" id="etiquettePanel">
+<div class="container">
+<div class="section-kicker reveal">Sepucuk Pesan dari Kami</div>
+<h2 class="section-title reveal">Agar Hari Ini Tetap Indah</h2>
+<p class="etiquette-intro reveal">
+      Hari ini kami memilih merayakan cinta dalam lingkar yang dekat dan penuh makna.
+      Dengan tulus, kami memohon bantuan Anda agar setiap detiknya tetap hangat,
+      khidmat, dan indah untuk dikenang bersama.
+    </p>
+<div class="etiquette-grid">
+<div class="etiquette-card reveal">
+<div class="etiquette-symbol">✓</div>
+<div class="etiquette-label">Kami Berharap</div>
+<div class="etiquette-title">Datang Sedikit Lebih Awal</div>
+<div class="etiquette-text">
+          Kehadiran Anda sedikit lebih awal akan memberi kami kesempatan
+          untuk memulai hari ini bersama, tanpa satu momen pun terlewat.
+        </div>
+</div>
+<div class="etiquette-card reveal">
+<div class="etiquette-symbol">✓</div>
+<div class="etiquette-label">Kami Berharap</div>
+<div class="etiquette-title">Hadir Sepenuh Hati</div>
+<div class="etiquette-text">
+          Saat akad berlangsung, kami mohon ponsel disenyapkan dan biarkan sejenak dunia menunggu,
+          agar kita dapat menyaksikan janji ini dengan hati yang benar-benar hadir.
+        </div>
+</div>
+<div class="etiquette-card reveal">
+<div class="etiquette-symbol dont">×</div>
+<div class="etiquette-label">Mohon Dihindari</div>
+<div class="etiquette-title">Tamu Tambahan</div>
+<div class="etiquette-text">
+          Pernikahan ini kami rayakan dalam lingkar yang sengaja dibuat intim.
+          Karena itu, kami berharap kehadiran terbatas pada nama yang tercantum dalam undangan.
+        </div>
+</div>
+<div class="etiquette-card reveal">
+<div class="etiquette-symbol dont">×</div>
+<div class="etiquette-label">Mohon Dihindari</div>
+<div class="etiquette-title">Hadiah &amp; Amplop</div>
+<div class="etiquette-text">
+          Tak ada yang perlu Anda bawa selain diri Anda, senyum yang tulus,
+          dan doa baik untuk perjalanan yang akan kami tempuh bersama.
+        </div>
+</div>
+</div>
+<div class="gift-message reveal">
+<div class="gift-icon">♡</div>
+<div class="gift-title">Kehadiran Anda, Hadiah Terindah</div>
+<div class="gift-text">
+        “Tak ada hadiah yang lebih kami harapkan selain melihat Anda hadir di sisi kami pada hari ini.
+        Dengan hati penuh syukur, kami mohon tidak membawa hadiah maupun amplop.
+        Kehadiran, doa, dan kenangan yang kita ciptakan bersama telah lebih berharga
+        daripada apa pun yang dapat dibungkus atau diberikan.”
+      </div>
+</div>
+</div>
+</section>
+
+<!-- GALLERY -->
+<section class="section gallery-section wedding-panel" data-panel="gallery" id="galleryPanel">
+<div class="container">
+<div class="section-kicker reveal">Jejak yang Kami Simpan</div>
+<h2 class="section-title reveal">Galeri</h2>
+<div class="gallery-editorial reveal">
+<figure class="gallery-frame gallery-main">
+<div class="gallery-photo" style="background-image: url('assets/foto/foto3.jpg');"></div>
+<figcaption class="gallery-caption"><span>01</span><span>Our Story</span></figcaption>
+</figure>
+<div class="gallery-side">
+<blockquote class="gallery-quote">
+          “Some stories are written quietly, then become a lifetime.”
+          <small>Krisnadi &amp; Indah</small>
+</blockquote>
+<figure class="gallery-frame">
+<div class="gallery-photo" style="background-image: url('assets/foto/foto4.jpg');"></div>
+<figcaption class="gallery-caption"><span>02</span><span>Us, In Between</span></figcaption>
+</figure>
+<figure class="gallery-frame">
+<div class="gallery-photo" style="background-image: url('assets/foto/foto5.jpg');"></div>
+<figcaption class="gallery-caption"><span>03</span><span>13 · 12 · 2026</span></figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+
+<!-- WISHES -->
+<section class="section wishes-section wedding-panel" data-panel="wishes" id="wishesPanel">
+<div class="container">
+<div class="section-kicker reveal">Tanda Kasih</div>
+<h2 class="section-title reveal">Ucapan &amp; Doa</h2>
+<div class="wishes-container reveal">
+
+<form id="wishesForm">
+<div class="form-group">
+<label class="form-label">Nama Anda</label>
+<input type="text" class="form-input" id="wishName" placeholder="Tulis nama Anda di sini" required>
+</div>
+<div class="form-group">
+<label class="form-label">Pesan &amp; Doa</label>
+<textarea class="form-textarea" id="wishText" placeholder="Berikan ucapan atau doa untuk mempelai" required></textarea>
+</div>
+<button type="submit" class="submit-btn">Kirim Pesan</button>
+</form>
+
+<div id="userEditedCardContainer" style="display: none; margin-bottom: 25px;">
+  <div style="font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 2.5px; margin-bottom: 10px; color: rgba(242,244,236,.85);">Pesan Anda</div>
+  <div class="message-card" style="margin-bottom: 0;">
+    <div class="message-name" id="myMsgName"></div>
+    <div class="message-text" id="myMsgText"></div>
+    <div class="message-time">Pesan Anda di perangkat ini</div>
+    <div style="margin-top: 12px; display: flex; gap: 10px;">
+      <button type="button" id="editMyMsgBtn" style="background: var(--forest); color: white; border: none; padding: 6px 14px; border-radius: 8px; font-size: 9px; cursor: pointer; text-transform: uppercase; letter-spacing: 1px;">Edit Pesan</button>
+      <button type="button" id="deleteMyMsgBtn" style="background: #a94442; color: white; border: none; padding: 6px 14px; border-radius: 8px; font-size: 9px; cursor: pointer; text-transform: uppercase; letter-spacing: 1px;">Hapus</button>
+    </div>
+  </div>
+</div>
+
+<div class="messages-list" id="messagesList">
+<div class="message-card" data-fixed="true">
+<div class="message-name">Keluarga Besar</div>
+<div class="message-text">Selamat menempuh hidup baru Krisnadi & Indah. Semoga menjadi keluarga yang sakinah, mawaddah, warahmah serta selalu dalam limpahan berkah Allah SWT.</div>
+<div class="message-time">Pesan Utama</div>
+</div>
+
+<div class="message-card" data-fixed="true">
+<div class="message-name">Krisnadi & Indah</div>
+<div class="message-text">Terima kasih banyak kepada seluruh keluarga dan teman-teman yang telah memberikan doa serta dukungan terbaik untuk hari bahagia kami.</div>
+<div class="message-time">Pesan Mempelai</div>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- CLOSING -->
+<section class="closing wedding-panel" data-panel="closing" id="closingPanel">
+<div class="container reveal">
+<div class="closing-kicker">Sebuah Catatan Kecil dari Kami</div>
+
+<div class="closing-copy">
+<p class="closing-paragraph">
+<span class="closing-line">“Pada akhirnya, hari ini bukan hanya</span>
+<span class="closing-line">tentang dua hati yang memilih</span>
+<span class="closing-line">berjalan bersama,</span>
+<span class="closing-line">melainkan juga tentang orang-orang</span>
+<span class="closing-line">terkasih yang menyertai langkah kami.”</span>
+</p>
+<p class="closing-paragraph">
+<span class="closing-line">Terima kasih atas doa, waktu, dan</span>
+<span class="closing-line">kehadiran Anda.</span>
+<span class="closing-line">Semoga setiap langkah yang kita kenang</span>
+<span class="closing-line">hari ini tinggal sebagai kehangatan</span>
+<span class="closing-line">yang indah.</span>
+</p>
+</div>
+<div class="closing-rule"></div>
+<div class="closing-signoff-block" id="closingSignoffBlock">
+<div class="closing-signoff closing-signoff-fade signoff-delay-1">Dengan cinta,</div>
+<div class="closing-names closing-signoff-fade signoff-delay-2">Krisnadi &amp; Indah</div>
+<div class="closing-date closing-signoff-fade signoff-delay-3">13 · 12 · 2026</div>
+</div>
+</div>
+</section>
+
+<!-- BOTTOM NAVIGATION -->
+<nav aria-label="Bagian undangan pernikahan" class="wedding-nav" id="weddingNav">
+<div class="nav-track" id="navTrack">
+<div aria-hidden="true" class="nav-indicator" id="navIndicator"></div>
+<button aria-label="Beranda" class="nav-button is-active" data-target="home" type="button">
+<svg class="nav-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 11.5L12 4l9 7.5"></path><path d="M5.5 10v10h13V10"></path><path d="M9.5 20v-6h5v6"></path></svg>
+<span>Beranda</span>
+</button>
+<button aria-label="Mempelai" class="nav-button" data-target="couple" type="button">
+<svg class="nav-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 20s-7-4.3-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.7-7 10-7 10z"></path></svg>
+<span>Mempelai</span>
+</button>
+<button aria-label="Doa" class="nav-button" data-target="prayer" type="button">
+<svg class="nav-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8.2 19V11.4c0-.9.5-1.5 1.2-1.5s1.2.6 1.2 1.5V14"></path><path d="M15.8 19V11.4c0-.9-.5-1.5-1.2-1.5s-1.2.6-1.2 1.5V14"></path><path d="M10.6 12.2V8.7c0-.9.5-1.5 1.4-1.5s1.4.6 1.4 1.5v3.5"></path><path d="M8.2 19h7.6"></path><path d="M7 19.5c.6-2.5 1.2-4.5 1.8-5.8"></path><path d="M17 19.5c-.6-2.5-1.2-4.5-1.8-5.8"></path></svg>
+<span>Doa</span>
+</button>
+<button aria-label="Pesan" class="nav-button" data-target="etiquette" type="button">
+<svg class="nav-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 4h10a2 2 0 0 1 2 2v14H5V6a2 2 0 0 1 2-2z"></path><path d="M8 9l1.5 1.5L12 8"></path><path d="M8 14l1.5 1.5L12 13"></path><path d="M14 9h2"></path><path d="M14 14h2"></path></svg>
+<span>Pesan</span>
+</button>
+<button aria-label="Galeri" class="nav-button" data-target="gallery" type="button">
+<svg class="nav-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="7" r="2"></circle><circle cx="16" cy="7" r="2"></circle><path d="M6.8 18v-4.3c0-1.3.9-2.2 2.2-2.2h1.1c.8 0 1.4.2 1.9.8"></path><path d="M17.2 18v-4.3c0-1.3-.9-2.2-2.2-2.2h-1.1c-.8 0-1.4.2-1.9.8"></path><path d="M10.4 13.6l1.6 1.2 1.6-1.2"></path><path d="M8.8 18v-2.8"></path><path d="M15.2 18v-2.8"></path></svg>
+<span>Galeri</span>
+</button>
+<button aria-label="Ucapan" class="nav-button" data-target="wishes" type="button">
+<svg class="nav-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+<span>Ucapan</span>
+</button>
+<button aria-label="Penutup" class="nav-button" data-target="closing" type="button">
+<svg class="nav-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect height="14" rx="2" ry="2" width="18" x="3" y="5"></rect><polyline points="3 7 12 13 21 7"></polyline></svg>
+<span>Penutup</span>
+</button>
+</div>
+</nav>
+
+<!-- Menghubungkan ke file JavaScript terpisah -->
+<script src="src/main.js"></script>
+</body>
+</html>
