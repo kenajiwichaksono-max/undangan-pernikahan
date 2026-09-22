@@ -4,4 +4,4 @@ compatibility_date = "2026-03-01"
 [[d1_databases]]
 binding = "DB"
 database_name = "db-undangan"
-database_id = "masukkan-database-id-kamu"
+database_id = "63ab1fbf-cfcd-4b4b-b139-b2edc6c73071"
