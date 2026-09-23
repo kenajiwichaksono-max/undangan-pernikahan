@@ -249,7 +249,7 @@ navButtons.forEach(function(button){
 /* ==========================================
    SUPABASE GUESTBOOK (WISHES) INTEGRATION
    ========================================== */
-const SUPABASE_URL = "https://nzmhtadlfzfyxjoagwv.supabase.co";
+const SUPABASE_URL = "https://nzmhtadlfzfyxjoagwv.supabase.co"; // Sudah dikoreksi tanpa huruf q
 const SUPABASE_KEY = "sb_publishable_UyQyTKnZvE-jSHBsqGvZxQ_PWFSUxG9";
 
 const wishesForm = document.querySelector('#wishesForm'); 
