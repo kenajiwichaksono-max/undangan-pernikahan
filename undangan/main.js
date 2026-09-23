@@ -249,13 +249,13 @@ navButtons.forEach(function(button){
 /* ==========================================
    SUPABASE GUESTBOOK (WISHES) INTEGRATION
    ========================================== */
-const SUPABASE_URL = "https://nzmhtadlfzfyxjoagwv.supabase.co"; // Sudah dikoreksi tanpa huruf q
+const SUPABASE_URL = "https://nzmhtadlfzfyxjoagwv.supabase.co"; // BERSIH TANPA HURUF 'q'
 const SUPABASE_KEY = "sb_publishable_UyQyTKnZvE-jSHBsqGvZxQ_PWFSUxG9";
 
-const wishesForm = document.querySelector('#wishesForm'); 
-const messagesList = document.querySelector('.messages-list');
+const wishesForm = document.getElementById('wishesForm'); 
+const messagesList = document.getElementById('messagesList');
 
-// Fungsi untuk mengambil data ucapan dari Supabase
+// Fungsi untuk mengambil dan menampilkan data ucapan dari Supabase
 async function loadWishes() {
   try {
     const response = await fetch(`${SUPABASE_URL}/rest/v1/wishes?select=*&order=id.desc`, {
@@ -268,7 +268,19 @@ async function loadWishes() {
     const data = await response.json();
     
     if (messagesList && Array.isArray(data)) {
-      messagesList.innerHTML = '';
+      messagesList.innerHTML = `
+        <div class="message-card" data-fixed="true">
+          <div class="message-name">Keluarga Besar</div>
+          <div class="message-text">Selamat menempuh hidup baru Krisnadi & Indah. Semoga menjadi keluarga yang sakinah, mawaddah, warahmah serta selalu dalam limpahan berkah Allah SWT.</div>
+          <div class="message-time">Pesan Utama</div>
+        </div>
+        <div class="message-card" data-fixed="true">
+          <div class="message-name">Krisnadi & Indah</div>
+          <div class="message-text">Terima kasih banyak kepada seluruh keluarga dan teman-teman yang telah memberikan doa serta dukungan terbaik untuk hari bahagia kami.</div>
+          <div class="message-time">Pesan Mempelai</div>
+        </div>
+      `;
+
       data.forEach(item => {
         const card = document.createElement('div');
         card.className = 'message-card';
@@ -315,8 +327,8 @@ if (wishesForm) {
   wishesForm.addEventListener('submit', async function(e) {
     e.preventDefault();
     
-    const nameInput = wishesForm.querySelector('input[name="name"]') || document.getElementById('wishName');
-    const messageInput = wishesForm.querySelector('textarea[name="message"]') || document.getElementById('wishText');
+    const nameInput = document.getElementById('wishName');
+    const messageInput = document.getElementById('wishText');
     
     if (!nameInput || !messageInput) return;
 
