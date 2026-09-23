@@ -250,7 +250,7 @@ navButtons.forEach(function(button){
    SUPABASE GUESTBOOK (WISHES) INTEGRATION
    ========================================== */
 const SUPABASE_URL = "https://nzmhtadlfzfyxjoagwv.supabase.co";
-const SUPABASE_KEY = "MASUKKAN_PUBLISHABLE_KEY_KAMU_DISINI"; // Ganti dengan key 'sb_publishable_...' kamu dari menu Project Settings > API Keys
+const SUPABASE_KEY = "sb_publishable_UyQyTKnZvE-jSHBsqGvZxQ_PWFSUxG9";
 
 const wishesForm = document.querySelector('#wishesForm'); 
 const messagesList = document.querySelector('.messages-list');
