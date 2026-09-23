@@ -246,19 +246,50 @@ navButtons.forEach(function(button){
   button.addEventListener('click', function(){ showWeddingPanel(button.getAttribute('data-target'), true); });
 });
 
-/* WISHES LOGIC */
-const wishesForm = document.getElementById('wishesForm');
-const userEditedCardContainer = document.getElementById('userEditedCardContainer');
-const myMsgName = document.getElementById('myMsgName');
-const myMsgText = document.getElementById('myMsgText');
-const editMyMsgBtn = document.getElementById('editMyMsgBtn');
-const deleteMyMsgBtn = document.getElementById('deleteMyMsgBtn');
+/* ==========================================
+   SUPABASE GUESTBOOK (WISHES) INTEGRATION
+   ========================================== */
+const SUPABASE_URL = "https://nzmhtadlfzfyxjoagwv.supabase.co";
+const SUPABASE_KEY = "MASUKKAN_PUBLISHABLE_KEY_KAMU_DISINI"; // Ganti dengan key 'sb_publishable_...' kamu dari menu Project Settings > API Keys
 
-const LOCAL_STORAGE_KEY = 'krisnadi_indah_my_wish';
+const wishesForm = document.querySelector('#wishesForm'); 
+const messagesList = document.querySelector('.messages-list');
 
+// Fungsi untuk mengambil data ucapan dari Supabase
+async function loadWishes() {
+  try {
+    const response = await fetch(`${SUPABASE_URL}/rest/v1/wishes?select=*&order=id.desc`, {
+      headers: {
+        "apikey": SUPABASE_KEY,
+        "Authorization": `Bearer ${SUPABASE_KEY}`
+      }
+    });
+    
+    const data = await response.json();
+    
+    if (messagesList && Array.isArray(data)) {
+      messagesList.innerHTML = '';
+      data.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'message-card';
+        card.innerHTML = `
+          <div class="message-name">${escapeHtml(item.name)}</div>
+          <div class="message-text collapsed">${escapeHtml(item.message)}</div>
+          <span class="message-time">${item.created_at ? new Date(item.created_at).toLocaleDateString('id-ID', {day: 'numeric', month: 'short', year: 'numeric'}) : 'Baru saja'}</span>
+        `;
+        messagesList.appendChild(card);
+        setupMessageCard(card, item.message);
+      });
+    }
+  } catch (error) {
+    console.error('Gagal memuat ucapan:', error);
+  }
+}
+
+// Fungsi untuk tombol "Read More / Selengkapnya" pada kartu pesan
 function setupMessageCard(cardElement, textContent) {
   const textDiv = cardElement.querySelector('.message-text');
-  if (textContent.length > 120) {
+  if (textContent && textContent.length > 120) {
     textDiv.classList.add('collapsed');
     const btn = document.createElement('button');
     btn.className = 'read-more-btn';
@@ -279,66 +310,62 @@ function setupMessageCard(cardElement, textContent) {
   }
 }
 
-document.querySelectorAll('.message-card').forEach(card => {
-  const textEl = card.querySelector('.message-text');
-  if (textEl) setupMessageCard(card, textEl.textContent);
-});
-
-function checkExistingDeviceMessage() {
-  const savedData = localStorage.getItem(LOCAL_STORAGE_KEY);
-  if (savedData) {
-    const data = JSON.parse(savedData);
-    wishesForm.style.display = 'none';
-    userEditedCardContainer.style.display = 'block';
-    myMsgName.textContent = data.name;
-    myMsgText.textContent = data.text;
-    setupMessageCard(userEditedCardContainer.querySelector('.message-card'), data.text);
-  } else {
-    wishesForm.style.display = 'block';
-    userEditedCardContainer.style.display = 'none';
-  }
-}
-
-checkExistingDeviceMessage();
-
+// Fungsi untuk mengirim ucapan baru saat form disubmit
 if (wishesForm) {
-  wishesForm.addEventListener('submit', function(e) {
-    e.preventDefault(); 
-    const name = document.getElementById('wishName').value.trim();
-    const text = document.getElementById('wishText').value.trim();
+  wishesForm.addEventListener('submit', async function(e) {
+    e.preventDefault();
     
-    if (name && text) {
-      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify({ name, text }));
-      wishesForm.reset();
-      checkExistingDeviceMessage();
+    const nameInput = wishesForm.querySelector('input[name="name"]') || document.getElementById('wishName');
+    const messageInput = wishesForm.querySelector('textarea[name="message"]') || document.getElementById('wishText');
+    
+    if (!nameInput || !messageInput) return;
+
+    const payload = {
+      name: nameInput.value.trim(),
+      message: messageInput.value.trim()
+    };
+
+    if (!payload.name || !payload.message) {
+      alert("Nama dan pesan wajib diisi!");
+      return;
+    }
+
+    try {
+      const response = await fetch(`${SUPABASE_URL}/rest/v1/wishes`, {
+        method: 'POST',
+        headers: { 
+          'apikey': SUPABASE_KEY,
+          'Authorization': `Bearer ${SUPABASE_KEY}`,
+          'Content-Type': 'application/json',
+          'Prefer': 'return=representation'
+        },
+        body: JSON.stringify(payload)
+      });
+
+      if (response.ok) {
+        nameInput.value = '';
+        messageInput.value = '';
+        alert("Ucapan berhasil dikirim!");
+        loadWishes(); // Refresh otomatis daftar ucapan
+      } else {
+        alert("Gagal mengirim ucapan.");
+      }
+    } catch (error) {
+      console.error('Gagal mengirim ucapan:', error);
     }
   });
 }
 
-if (editMyMsgBtn) {
-  editMyMsgBtn.addEventListener('click', function() {
-    const savedData = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
-    if (savedData) {
-      document.getElementById('wishName').value = savedData.name;
-      document.getElementById('wishText').value = savedData.text;
-      
-      localStorage.removeItem(LOCAL_STORAGE_KEY);
-      userEditedCardContainer.style.display = 'none';
-      wishesForm.style.display = 'block';
-    }
-  });
+// Fungsi keamanan untuk mencegah celah HTML Injection
+function escapeHtml(str) {
+  if (!str) return '';
+  return str.replace(/[&<>'"]/g, 
+    tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
+  );
 }
 
-if (deleteMyMsgBtn) {
-  deleteMyMsgBtn.addEventListener('click', function() {
-    if (confirm('Apakah Anda yakin ingin menghapus pesan ini?')) {
-      localStorage.removeItem(LOCAL_STORAGE_KEY);
-      userEditedCardContainer.style.display = 'none';
-      wishesForm.style.display = 'block';
-      wishesForm.reset();
-    }
-  });
-}
+// Panggil fungsi muat ucapan saat halaman pertama dibuka
+loadWishes();
 
 /* WEDDING DAY SCROLL REVEAL */
 const homePanel = document.getElementById('homePanel');
@@ -548,78 +575,4 @@ if (initiallyActivePanel) {
 const initialNavButton = document.querySelector('.nav-button.is-active');
 if (initialNavButton) {
   window.requestAnimationFrame(function(){ updateNavIndicator(initialNavButton); });
-
-// Tambahkan kode ini di dalam file src/main.js
-
-const wishesForm = document.querySelector('#wishesForm'); // Pastikan id form sesuaikan dengan HTML kamu
-const messagesList = document.querySelector('.messages-list');
-
-// Fungsi untuk mengambil data ucapan dari Cloudflare D1
-async function loadWishes() {
-  try {
-    const response = await fetch('/wishes');
-    const data = await response.json();
-    
-    if (messagesList && Array.isArray(data)) {
-      messagesList.innerHTML = '';
-      data.forEach(item => {
-        const card = document.createElement('div');
-        card.className = 'message-card';
-        card.innerHTML = `
-          <div class="message-name">${escapeHtml(item.name)}</div>
-          <div class="message-text collapsed">${escapeHtml(item.message)}</div>
-          <span class="message-time">${item.created_at || 'Baru saja'}</span>
-        `;
-        messagesList.appendChild(card);
-      });
-    }
-  } catch (error) {
-    console.error('Gagal memuat ucapan:', error);
-  }
-}
-
-// Fungsi untuk mengirim ucapan baru saat form disubmit
-if (wishesForm) {
-  wishesForm.addEventListener('submit', async function(e) {
-    e.preventDefault();
-    
-    const nameInput = wishesForm.querySelector('input[name="name"]');
-    const messageInput = wishesForm.querySelector('textarea[name="message"]');
-    
-    if (!nameInput || !messageInput) return;
-
-    const payload = {
-      name: nameInput.value,
-      message: messageInput.value
-    };
-
-    try {
-      const response = await fetch('/wishes', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-
-      if (response.ok) {
-        nameInput.value = '';
-        messageInput.value = '';
-        loadWishes(); // Refresh otomatis daftar ucapan
-      }
-    } catch (error) {
-      console.error('Gagal mengirim ucapan:', error);
-    }
-  });
-}
-
-// Fungsi keamanan untuk teks HTML
-function escapeHtml(str) {
-  if (!str) return '';
-  return str.replace(/[&<>'"]/g, 
-    tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
-  );
-}
-
-// Panggil fungsi saat halaman pertama kali dibuka
-loadWishes();
-
 }
